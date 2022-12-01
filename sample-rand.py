@@ -1,27 +1,57 @@
-population_number = int(input("Enter number of total population:"))
-time_slot_number = int(input("Enter number of time points per entry:"))
-sample_number = int(input("Enter number of sample you need:"))
-print("Ok. so you should have ", int(population_number)*int(time_slot_number), " records from 1 to", int(population_number)*int(time_slot_number),".and you need ", time_slot_number, "sample groups with ",sample_number//time_slot_number,"samples in each")
-
-# patient_number = 100
-# time_slot_number = 5
-selected_patients = []
-# sample_groupes = {'timeslot_1': [], 'timeslot_2': [], 'timeslot_2': [], 'timeslot_4': [], 'timeslot_5': [], }
-sample_groupes = []
-for x in range(time_slot_number):
-    sample_groupes.append([])
-# sample_groupes = {}
 import random
-# print(random.randint(1, patient_number))
-while len(selected_patients) < sample_number:
-    rand_p = random.randint(1, population_number)
-    if rand_p not in selected_patients:     #check if new sample selected
-        rand_ts = random.randint(0, time_slot_number-1)
-        if len(sample_groupes[rand_ts])< sample_number//time_slot_number:
-        # selected_patients.append((rand_p-1)*time_slot_number+rand_ts)
-            sample_groupes[rand_ts].append((rand_p-1)*time_slot_number+(rand_ts+1))
+
+population_number = int(input("Enter number of total population: "))        # Total number of population
+time_slot_number = int(input("Enter number of time points per entry: "))    # Number of time points per entry
+sample_number = int(input("Enter number of sample you need: "))             # Number of samples needed
+
+# Ask user to check data structure to make sure it's suitable for this algorithm
+print("Ok. so you should have ", int(population_number)*int(time_slot_number),
+      " records from 1 to", int(population_number)*int(time_slot_number),
+      "and you need ", time_slot_number, "sample groups with ",
+      sample_number//time_slot_number, "samples in each. IF NOT DO NOT USE THIS PROGRAM!!!")
+while True:
+    missed_records_deduction = input("Do you want to deduct missed records before sampling?(y/n): ")
+    if missed_records_deduction == "y":
+        print("Your answer: Yes")
+        missed_records = input("Enter missed records index separated by commas(','):\n")
+        missed_records_list = [int(item) for item in missed_records.split(',') if item.strip().isdigit()]
+        entry_with_missed_timeslot = [((item - 1) // time_slot_number) + 1 for item in missed_records_list]
+        print("The following list will be deducted from sampling:")
+        print("missing records: ", missed_records_list)
+        # print("Entries(Patients) with missing data for at least one time slot: ", entry_with_missed_timeslot)
+        entry_with_missed_timeslot = list(dict.fromkeys(entry_with_missed_timeslot))
+        print("unique entries with missed time slots: ", entry_with_missed_timeslot)
+        break
+    if missed_records_deduction == "n":
+        print("Your answer: No")
+        missed_records_list = []
+        break
+
+selected_patients = []          # list of patients that selected yet
+sample_groups = []             # two dimensional list of selected samples
+for x in range(time_slot_number):
+    sample_groups.append([])
+
+
+while len(selected_patients) < len(entry_with_missed_timeslot):      # while all samples are not obtained
+    rand_p_index = random.randint(0, len(entry_with_missed_timeslot)-1)  # select a random sample
+    if entry_with_missed_timeslot[rand_p_index] not in selected_patients:            # check if no other sample from that entry(patient) selected before
+        rand_ts = random.randint(0, time_slot_number - 1)  # select a random time slot
+        while ((entry_with_missed_timeslot[rand_p_index] - 1) * time_slot_number) + (rand_ts + 1) in missed_records_list:
+            rand_ts = random.randint(0, time_slot_number-1)     # select a random time slot
+        if len(sample_groups[rand_ts])< sample_number//time_slot_number:    # check if all needed samples for time slot not obtained
+            sample_groups[rand_ts].append((entry_with_missed_timeslot[rand_p_index] - 1) * time_slot_number + (rand_ts + 1))      # add random sample to appropriate sample group
+            selected_patients.append(entry_with_missed_timeslot[rand_p_index])
+
+while len(selected_patients) < sample_number:      # while all samples are not obtained
+    rand_p = random.randint(1, population_number)  # select a random sample
+    if rand_p not in selected_patients:            # check if no other sample from that entry(patient) selected before
+        rand_ts = random.randint(0, time_slot_number-1)     # select a random time slot
+        if len(sample_groups[rand_ts])< sample_number//time_slot_number:    # check if all needed samples for time slot not obtained
+            # selected_patients.append((rand_p-1)*time_slot_number+rand_ts)
+            sample_groups[rand_ts].append((rand_p - 1) * time_slot_number + (rand_ts + 1))      # add random sample to appropriate sample group
             selected_patients.append(rand_p)
 # selected_patients.sort()
 for x in range(time_slot_number):
-    print(f'for time point {x+1} use recordes:')
-    print(sample_groupes[x])
+    print(f'for time point {x+1} use records:')
+    print(sample_groups[x])
