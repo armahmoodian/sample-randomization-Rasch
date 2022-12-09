@@ -1,5 +1,5 @@
 # Randomization of Samples for Rasch Analysis
-Sample randomization across time points for Rasch Analysis of Repeated Measures
+Sample randomization of repeated measures across time points for Rasch analysis 
 
 ## What we have:
 A dataset of records of different participants that each participant was questioned (has entries) at different time points
