@@ -1,11 +1,12 @@
 import random
 
-population_number = int(input("Enter number of total population: "))        # Total number of population
+population_number = int(input("Enter number of total population(Number of patients): "))        # Total number of population
 time_slot_number = int(input("Enter number of time points per entry: "))    # Number of time points per entry
-sample_number = int(input("Enter number of sample you need: "))             # Number of samples needed
+# sample_number = int(input("Enter number of sample you need: "))             # Number of samples needed
+sample_number = population_number
 
 # Ask user to check data structure to make sure it's suitable for this algorithm
-print("Ok. so you should have ", int(population_number)*int(time_slot_number),
+print("You should have ", int(population_number)*int(time_slot_number),
       " records from 1 to", int(population_number)*int(time_slot_number),
       "and you need ", time_slot_number, "sample groups with ",
       sample_number//time_slot_number, "samples in each. IF NOT DO NOT USE THIS PROGRAM!!!")
