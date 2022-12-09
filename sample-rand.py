@@ -1,7 +1,7 @@
 import random
 
-population_number = int(input("Enter number of total population(Number of patients): "))        # Total number of population
-time_slot_number = int(input("Enter number of time points per entry: "))    # Number of time points per entry
+population_number = int(input("Enter number of total participants: "))        # Total number of population
+time_slot_number = int(input("Enter number of time points per participant: "))    # Number of time points per entry
 # sample_number = int(input("Enter number of sample you need: "))             # Number of samples needed
 sample_number = population_number
 
@@ -20,7 +20,7 @@ while True:
         entry_with_missed_timeslot = list(dict.fromkeys(entry_with_missed_timeslot))    # make a unique list of entries with missing data
         print("The following list will be deducted from sampling:")
         print("missing records: ", missed_records_list)
-        print("unique entries with missed time slots: ", entry_with_missed_timeslot)
+        print("Participants with missed time slots: ", entry_with_missed_timeslot)
         break
     if missed_records_deduction == "n" or missed_records_deduction == "no":
         print("Your answer: No")
