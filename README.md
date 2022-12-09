@@ -9,7 +9,7 @@ A dataset of records of different participants that each participant was questio
 We need to randomly choose one time point for each participant's data 
 
 ## Remark:
-some participants have one or more time points with missing data. In this situation, we must choose our random sample for these participants from complete (not missing) records of them.
+Some participants have one or more time points with missing data. In this situation, we must choose our random sample for these participants from complete (not missing) records of them.
 
 ## Solution:
 In this python code, we use the random function in the python library (that uses the Mersenne Twister algorithm to generate random numbers) to choose a random time point for each participant.
