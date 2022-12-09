@@ -3,7 +3,7 @@ Sample randomization across time points for Rasch Analysis of Repeated Measures
 
 ## What we have:
 A dataset of records of different patients that each patient was questioned (has entries) at different time points
-
+![01](https://user-images.githubusercontent.com/82238399/206615620-d901c9da-ff59-4485-b030-b28ddc8d9aa8.png)
 
 ## What we want:
 We need to randomly choose one time point for each patient's data 
