@@ -20,7 +20,7 @@ while True:
         entry_with_missed_timeslot = list(dict.fromkeys(entry_with_missed_timeslot))    # make a unique list of entries with missing data
         print("The following list will be deducted from sampling:")
         print("missing records: ", missed_records_list)
-        print("Participants with missed time slots: ", entry_with_missed_timeslot)
+        print("Participants with missed time points: ", entry_with_missed_timeslot)
         break
     if missed_records_deduction == "n" or missed_records_deduction == "no":
         print("Your answer: No")
