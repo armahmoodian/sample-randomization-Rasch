@@ -1,7 +1,7 @@
 import random
 
-population_number = int(input("Enter number of total participants: "))        # Total number of population
-time_slot_number = int(input("Enter number of time points per participant: "))    # Number of time points per entry
+population_number = int(input("Enter the number of total participants: "))        # Total number of population
+time_slot_number = int(input("Enter the number of time points per participant: "))    # Number of time points per entry
 # sample_number = int(input("Enter number of sample you need: "))             # Number of samples needed
 sample_number = population_number
 
@@ -14,7 +14,7 @@ while True:
     missed_records_deduction = input("Do you want to deduct missed records before sampling?(y/n): ").lower()
     if missed_records_deduction == "y" or missed_records_deduction == "yes":
         print("Your answer: Yes")
-        missed_records = input("Enter missed records index separated by commas(','):\n")
+        missed_records = input("Enter the missed records indexes separated by commas(','):\n")
         missed_records_list = [int(item) for item in missed_records.split(',') if item.strip().isdigit()]  # clean entered numbers and asign them to the list
         entry_with_missed_timeslot = [((item - 1) // time_slot_number) + 1 for item in missed_records_list]  # find the entries with missing data
         entry_with_missed_timeslot = list(dict.fromkeys(entry_with_missed_timeslot))    # make a unique list of entries with missing data
