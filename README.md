@@ -1,4 +1,4 @@
-# Sample Randomization in the Rasch Analysis
+# Randomization of Samples for Rasch Analysis
 Sample randomization across time points for Rasch Analysis of Repeated Measures
 
 ## What we have:
