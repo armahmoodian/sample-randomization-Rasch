@@ -7,7 +7,7 @@ A dataset of records of different participants that each participant was questio
 ![01](https://user-images.githubusercontent.com/82238399/206615620-d901c9da-ff59-4485-b030-b28ddc8d9aa8.png)
 
 ## What we want:
-We need to randomly choose one time point for each participant's data 
+We need to randomly choose one time point for each participant's data. Each time point should have an equal number of selected records.
 
 ## Remark:
 Some participants have one or more time points with missing data. In this situation, we must choose our random sample for these participants from complete (not missing) records of them.
