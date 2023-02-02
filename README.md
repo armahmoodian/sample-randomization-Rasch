@@ -1,5 +1,6 @@
-# Randomization of Samples for Rasch Analysis
-Sample randomization of repeated measures across time points for Rasch analysis 
+# Randomization of Samples for Rasch Analysis in longitudinal studies
+Sample randomization of repeated measures across time points for Rasch analysis.
+Determine an algorithm for selecting samples based on certain considerations across more than one time point(longitudinal studies), so that each patient was included in the sample only once, and all time points were equally represented. 
 
 ## What we have:
 A dataset of records of different participants that each participant was questioned (has entries) at different time points
